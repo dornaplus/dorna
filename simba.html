@@ -1,135 +1,385 @@
-<html dir="rtl"><head>
-	<title>دانلود نرم افزار simba سیمبا فیلم و سریال iranflix</title>	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="Content-Language" content="fa">
-	<link rel="stylesheet" href="style.css" type="text/css" media="all">
-	
-	
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دانلود اپلیکیشن سیمبا | فیلم و سریال</title>
+  <meta name="description" content="دانلود رایگان اپلیکیشن سیمبا برای اندروید، اندروید تی‌وی و ویندوز — بدون نیاز به اشتراک">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0d1322;
+      --card: #111a2e;
+      --card-2: #16213a;
+      --accent: #ffb01f;
+      --accent-2: #ff7a1a;
+      --accent-3: #f43f5e;
+      --text: #eaf0ff;
+      --muted: #93a1c4;
+      --border: rgba(255, 255, 255, 0.07);
+      --radius: 20px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+      background:
+        radial-gradient(900px 500px at 85% -10%, rgba(255, 176, 31, 0.16), transparent 60%),
+        radial-gradient(900px 600px at -10% 20%, rgba(244, 63, 94, 0.14), transparent 60%),
+        radial-gradient(700px 500px at 50% 110%, rgba(56, 130, 246, 0.12), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(20px, 5vw, 48px) 16px 64px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      text-align: center;
+      padding: 8px 0 12px;
+    }
+
+    .logo-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 22px;
+    }
+
+    .logo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -16px;
+      border-radius: 24px;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent-3), var(--accent-2), var(--accent));
+      opacity: 0.35;
+      filter: blur(22px);
+      z-index: -1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .logo {
+      width: clamp(160px, 42vw, 240px);
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+      display: block;
+      margin: 0 auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.5; }
+    }
+
+    .title {
+      font-size: clamp(1.9rem, 7vw, 2.9rem);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      background: linear-gradient(120deg, var(--text), #ffd98a 60%, var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #b9ffd3;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+      padding: 7px 16px;
+      border-radius: 999px;
+    }
+
+    .subtitle svg {
+      flex-shrink: 0;
+    }
+
+    /* ---------- Section label ---------- */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 34px 0 16px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ---------- Download buttons ---------- */
+    .downloads {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 560px) {
+      .downloads {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 176, 31, 0.5);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .btn .icon {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--tint, rgba(255, 255, 255, 0.08));
+      color: var(--ic, #fff);
+    }
+
+    .btn .label {
+      flex: 1;
+      text-align: right;
+    }
+
+    .btn .label b {
+      display: block;
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .btn .label span {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .btn .arrow {
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 0.18s ease;
+    }
+    .btn:hover .arrow {
+      transform: translateX(-4px);
+      color: var(--accent);
+    }
+
+    /* Tints */
+    .t-android { --tint: rgba(61, 220, 132, 0.16); --ic: #3ddc84; }
+    .t-tv      { --tint: rgba(56, 130, 246, 0.16); --ic: #6ea8ff; }
+    .t-exe     { --tint: rgba(56, 160, 246, 0.16); --ic: #4fb6ff; }
+    .t-zip     { --tint: rgba(255, 176, 31, 0.16); --ic: #ffb01f; }
+    .t-tg      { --tint: rgba(0, 136, 204, 0.18); --ic: #4dc2f0; }
+
+    .btn.tg {
+      grid-column: 1 / -1;
+      border-color: rgba(77, 194, 240, 0.3);
+      background: linear-gradient(180deg, #12233a, var(--card));
+    }
+
+    /* ---------- Gallery ---------- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .shot {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .shot:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 176, 31, 0.45);
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 9 / 16;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    
+  <main class="container">
 
-	
-		
-		
+    <!-- Hero -->
+    <header class="hero">
+      <div class="logo-wrap">
+        <img class="logo" src="logo.jpg" alt="لوگوی اپلیکیشن سیمبا">
+      </div>
+      <h1 class="title">اپلیکیشن سیمبا</h1>
+      <div class="subtitle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        رایگان بدون اشتراک
+      </div>
+    </header>
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			<div id="BoxMain">
-		
+    <!-- Downloads -->
+    <div class="section-label">دانلود اپلیکیشن</div>
 
-		</div>
-		
-			<div id="BoxMain">
-		<div id="Box2">
-			<img src="redeeming-love-poster.jpg" class="logo2"><br>
-		</div>
-		<div id="Box2">
-			<span class="title">اپلیکیشن سیمبا </span><br>
-		</div>
-		
-		
-		
-			<div id="Box2">
-			<span class="title2">رایگان بدون اشتراک</span><br>
-		</div>
-		
-		
-		
-		
+    <section class="downloads">
+      <a class="btn t-android" href="https://ninamacos.info/apk/Simba-v79.apk">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 9.3a1.05 1.05 0 1 0 0-2.1 1.05 1.05 0 0 0 0 2.1Zm-11 0a1.05 1.05 0 1 0 0-2.1 1.05 1.05 0 0 0 0 2.1Zm5.5-2.7c.4 0 .8-.05 1.1-.15l2.1-2.1a.32.32 0 0 1 .45 0c.13.13.13.33 0 .46l-2.1 2.1a6.6 6.6 0 0 1 3.95 5.99H6.5a6.6 6.6 0 0 1 3.95-6l-2.1-2.1a.32.32 0 0 1 .45-.45l2.1 2.1c.35.1.7.15 1.1.15Zm-5.5 7.1h11c0 3.3-2.5 6-5.5 6s-5.5-2.7-5.5-6Z"/></svg>
+        </span>
+        <span class="label">
+          <b>دانلود نسخه اندروید</b>
+          <span>فایل APK — سازگار با گوشی‌ها</span>
+        </span>
+        <span class="arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </span>
+      </a>
 
-		
-		
-		
-			
-		
-		<div id="Box2">
-			
-			<a href="https://ninamacos.info/apk/Simba-v79.apk" class="Link">
-				<div class="BoxLink" style="width: 250px !important;">
-				دانلود  نسخه اندروید 
-				</div>
-			</a>
-		</div>
-		
-		<br>
+      <a class="btn t-tv" href="https://ninamacos.info/apk/Sigma_tv6.apk">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="m8 2 4 5 4-5"/></svg>
+        </span>
+        <span class="label">
+          <b>دانلود نسخه اندروید تی‌وی</b>
+          <span>مخصوص تلویزیون و باکس‌های اندروید</span>
+        </span>
+        <span class="arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </span>
+      </a>
 
-					<div id="Box2">
-			
-			<a href="https://ninamacos.info/apk/Sigma_tv6.apk" class="Link">
-				<div class="BoxLink" style="width: 250px !important;">
-				  دانلود نسخه اندروید تی وی  
-				</div>
-			</a>
-		</div>
-		
-		
-<br>
-				
-				<div id="Box2">
-			
-			<a href="https://ninamacos.info/apk/windows/simbaapp%20Setup%204.0.0.exe" class="Link">
-				<div class="BoxLink" style="width: 250px !important;">
-			دانلود نسخه ویندوز فایل exe
-				</div>
-			</a>
-		</div>
+      <a class="btn t-exe" href="https://ninamacos.info/apk/windows/simbaapp%20Setup%204.0.0.exe">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.55 10.5 4.5v7.05H3V5.55ZM3 18.45l7.5 1.05V12.45H3v6ZM11.5 4.4 21 3v8.55h-9.5V4.4ZM11.5 20.6 21 21v-8.55h-9.5v8.15Z"/></svg>
+        </span>
+        <span class="label">
+          <b>دانلود نسخه ویندوز (EXE)</b>
+          <span>نصب مستقیم روی ویندوز</span>
+        </span>
+        <span class="arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </span>
+      </a>
 
+      <a class="btn t-zip" href="https://ninamacos.info/apk/windows/simbaapp%20Setup%204.0.0.zip">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg>
+        </span>
+        <span class="label">
+          <b>دانلود نسخه ویندوز (ZIP)</b>
+          <span>فایل فشرده — نسخه قابل حمل</span>
+        </span>
+        <span class="arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </span>
+      </a>
 
-					<div id="Box2">
-			
-			<a href="https://ninamacos.info/apk/windows/simbaapp%20Setup%204.0.0.zip" class="Link">
-				<div class="BoxLink" style="width: 250px !important;">
-			دانلود نسخه ویندوز فایل zip
-				</div>
-			</a>
-		</div>
+      <a class="btn tg" href="tg://resolve?domain=vidboxapp">
+        <span class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M21.94 4.35 18.9 19.1c-.23 1.02-.84 1.27-1.7.79l-4.7-3.46-2.27 2.18c-.25.25-.46.46-.95.46l.34-4.78 8.7-7.86c.38-.34-.08-.53-.59-.19l-10.75 6.77-4.63-1.45c-1.01-.32-1.03-1.01.21-1.49l18.1-6.97c.84-.31 1.57.2 1.3 1.45Z"/></svg>
+        </span>
+        <span class="label">
+          <b>پشتیبانی در تلگرام</b>
+          <span>در صورت نیاز به کمک، با ما در ارتباط باشید</span>
+        </span>
+        <span class="arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+        </span>
+      </a>
+    </section>
 
-		
+    <!-- Gallery -->
+    <div class="section-label">تصاویر اپلیکیشن</div>
 
-				<div id="Box2">
-			
-			<a href="tg://resolve?domain=vidboxapp" class="Link">
-				<div class="BoxLink" style="width: 250px !important;">
-		پشتیبانی در تلگرام
-				</div>
-			</a>
-		</div>
-		
-	
-		
-		
-		
-		
-		
-		
-		<div id="Box2">
-			<img src="6.jpg" class="poster" style="width: 200px !important;height: 370px !important;"><br>	
-			<img src="5.jpg" class="poster" style="width: 200px !important;height: 370px !important;"><br>
-			<img src="4.jpg" class="poster" style="width: 200px !important;height: 370px !important;"><br>
-			<img src="3.jpg" class="poster" style="width: 200px !important;height: 370px !important;"><br>	
-			<img src="2.jpg" class="poster" style="width: 200px !important;height: 370px !important;"><br>
-			<img src="1.jpg" class="poster" style="width: 200px !important;height: 370px !important;"><br>
-		</div>
-		
-		
-	</div>
+    <section class="gallery">
+      <figure class="shot"><img src="https://dornaplus.github.io/dorna/6.jpg" alt="تصویر اپلیکیشن سیمبا" loading="lazy"></figure>
+      <figure class="shot"><img src="https://dornaplus.github.io/dorna/5.jpg" alt="تصویر اپلیکیشن سیمبا" loading="lazy"></figure>
+      <figure class="shot"><img src="https://dornaplus.github.io/dorna/4.jpg" alt="تصویر اپلیکیشن سیمبا" loading="lazy"></figure>
+      <figure class="shot"><img src="https://dornaplus.github.io/dorna/3.jpg" alt="تصویر اپلیکیشن سیمبا" loading="lazy"></figure>
+      <figure class="shot"><img src="https://dornaplus.github.io/dorna/2.jpg" alt="تصویر اپلیکیشن سیمبا" loading="lazy"></figure>
+      <figure class="shot"><img src="https://dornaplus.github.io/dorna/1.jpg" alt="تصویر اپلیکیشن سیمبا" loading="lazy"></figure>
+    </section>
 
-</body></html>
+    <footer class="footer">
+      <p>اپلیکیشن سیمبا — تماشای فیلم و سریال، رایگان و بدون اشتراک.</p>
+      <p>برای پشتیبانی از طریق <a href="tg://resolve?domain=vidboxapp">تلگرام</a> با ما در ارتباط باشید.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
